@@ -15,6 +15,23 @@ public class GameManager : MonoBehaviour
     [Header("椅子")]
     public Transform chair;
 
+
+    [Header("喇叭")]
+    public AudioSource aud;
+    [Header("木頭滑動音效")]
+    public AudioClip soundWoodMove;
+    [Header("敲門音效")]
+    public AudioClip countknock;
+
+    private int countDoor; //看到門的次數
+
+    public void LookDoor()
+    {
+        countDoor++;       //遞增1
+        if(countDoor ==1)
+        { aud.PlayOneShot(countknock, 5); }  //音量
+    }
+
     //定義方法(Method):有特定內容的功能
     //修飾詞  傳回類型 方法名稱 ()  { 敘述 }
     //void 為無傳回 :使用方法不會得到任何資料
@@ -38,6 +55,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
 
     }
+
+   // public IEnumerator MoveChair()
+
+
+    //新進度程式未完成所以先打這
+    //喇叭.播放一次音效(音效.音量)
+    // Aud.PlayOneShot(soundWoodMove,2.5f);
+
 
     //事件:開始 - 播放時執行一次
     private void Start()
